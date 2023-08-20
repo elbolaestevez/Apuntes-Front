@@ -12,7 +12,9 @@ module.exports = {
     extend: {
       colors: {
         greenphotobg: "#4bc383",
-        graytextcolor:"#51585E"
+        graytextcolor: "#51585E",
+        greenbutton: "#ccfdc6",
+        buttontextgray: "#004554",
       },
     },
   },
