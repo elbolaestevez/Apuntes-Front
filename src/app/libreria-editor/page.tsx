@@ -28,19 +28,39 @@ const LiberiaEditor = () => {
 
   const handleButtonClick = (e: any) => {
     e.preventDefault();
-    console.log("titulo", title.current?.value);
-    console.log("año", year.current?.value);
-    console.log("Profesor", professour.current?.value);
-    console.log("UniversidadSeleccionada", selectedUniversidad);
-    console.log("FacultadSeleccionada", selectedFacultad);
-    console.log("GradoSeleeccionado", selectedGrado);
-    console.log("CursoSeleccionado", selectedCurso);
-    console.log("number", number.current?.value);
-    console.log("descripcion", descripction.current?.value);
-    if (selectedFile) {
+    const titleValue = title.current?.value;
+    const yearValue = year.current?.value;
+    const professourValue = professour.current?.value;
+    const numberValue = number.current?.value;
+    const descriptionValue = descripction.current?.value;
+
+    // Validar los valores
+    if (
+      titleValue &&
+      yearValue &&
+      professourValue &&
+      selectedUniversidad &&
+      selectedFacultad &&
+      selectedGrado &&
+      selectedCurso &&
+      numberValue &&
+      descriptionValue &&
+      selectedFile
+    ) {
+      console.log("titulo", titleValue);
+      console.log("año", yearValue);
+      console.log("Profesor", professourValue);
+      console.log("UniversidadSeleccionada", selectedUniversidad);
+      console.log("FacultadSeleccionada", selectedFacultad);
+      console.log("GradoSeleeccionado", selectedGrado);
+      console.log("CursoSeleccionado", selectedCurso);
+      console.log("number", numberValue);
+      console.log("descripcion", descriptionValue);
       console.log("Archivo Subido:", selectedFile.name);
       console.log("Tipo de Archivo:", selectedFile.type);
       console.log("Tamaño:", selectedFile.size, "bytes");
+    } else {
+      console.log("Faltan campos por completar.");
     }
   };
 

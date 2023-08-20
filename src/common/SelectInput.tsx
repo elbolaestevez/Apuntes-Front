@@ -1,4 +1,4 @@
-    import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import axios from "axios"; // Import Axios
 import { fakeUniversityData } from "@/utils/fakeDataUniversity";
 import { RxCross2 } from "react-icons/rx";
