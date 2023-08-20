@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         greenphotobg: "#4bc383",
+        graytextcolor:"#51585E"
       },
     },
   },
