@@ -14,19 +14,35 @@ const LiberiaEditor = () => {
   const descripction = useRef<HTMLInputElement>(null);
   const number = useRef<HTMLInputElement>(null);
 
-  const [selectedUniversidad, setSelectedUniversidad] = useState("");
-  const [selectedFacultad, setSelectedFacultad] = useState("");
-  const [selectedGrado, setSelectedGrado] = useState("");
-  const [selectedCurso, setSelectedCurso] = useState("");
+  const [selectedUniversidad, setSelectedUniversidad] = useState<{
+    id: number;
+    opcion: string;
+  }>({ id: 0, opcion: "" });
+
+  const [selectedFacultad, setSelectedFacultad] = useState<{
+    id: number;
+    opcion: string;
+  }>({ id: 0, opcion: "" });
+
+  const [selectedGrado, setSelectedGrado] = useState<{
+    id: number;
+    opcion: string;
+  }>({ id: 0, opcion: "" });
+
+  const [selectedCurso, setSelectedCurso] = useState<{
+    id: number;
+    opcion: string;
+  }>({ id: 0, opcion: "" });
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
 
-  const isUniversitySelected = selectedUniversidad.length > 1;
+  const isUniversitySelected = selectedUniversidad.opcion.length > 1;
   const isFacultadSelected =
-    selectedFacultad.length > 1 && selectedUniversidad.length > 1;
+    selectedFacultad.opcion.length > 1 && selectedUniversidad.opcion.length > 1;
   const isGradoSelected =
-    selectedGrado.length > 1 && selectedFacultad.length > 1;
+    selectedGrado.opcion.length > 1 && selectedFacultad.opcion.length > 1;
 
   const handleButtonClick = (e: any) => {
     e.preventDefault();
@@ -66,17 +82,17 @@ const LiberiaEditor = () => {
     }
   };
 
-  const handleUniversidadChange = (option: string) => {
-    setSelectedUniversidad(option);
+  const handleUniversidadChange = (option: string, id: number) => {
+    setSelectedUniversidad({ id, opcion: option });
   };
-  const handleFacultadChange = (option: string) => {
-    setSelectedFacultad(option);
+  const handleFacultadChange = (option: string, id: number) => {
+    setSelectedFacultad({ id, opcion: option });
   };
-  const handleGradoChange = (option: string) => {
-    setSelectedGrado(option);
+  const handleGradoChange = (option: string, id: number) => {
+    setSelectedGrado({ id, opcion: option });
   };
-  const handleCursoChange = (option: string) => {
-    setSelectedCurso(option);
+  const handleCursoChange = (option: string, id: number) => {
+    setSelectedCurso({ id, opcion: option });
   };
   const handleFileChange = (file: File | null) => {
     setLoading(true);
@@ -165,6 +181,7 @@ const LiberiaEditor = () => {
                 inputWidth="w-full"
                 onOptionChange={handleFacultadChange}
                 enabled={isUniversitySelected}
+                id={selectedUniversidad.id}
               />
             </div>
           </div>
@@ -176,6 +193,7 @@ const LiberiaEditor = () => {
               required
               onOptionChange={handleGradoChange}
               enabled={isFacultadSelected}
+              id={selectedFacultad.id}
             />
             <SelectInput
               label="Curso"
@@ -184,6 +202,7 @@ const LiberiaEditor = () => {
               required
               onOptionChange={handleCursoChange}
               enabled={isGradoSelected}
+              id={selectedGrado.id}
             />
             <TextInput
               inputType="number"
