@@ -5,6 +5,7 @@ import TextInput from "@/common/TextInput";
 import SelectInput from "@/common/SelectInput";
 import Button from "@/common/Button";
 import FileInput from "@/common/FileInput";
+import Spinner from "@/common/Spinner";
 
 const LiberiaEditor = () => {
   const title = useRef<HTMLInputElement>(null);
@@ -84,8 +85,11 @@ const LiberiaEditor = () => {
   if (loading) {
     return (
       // Contenido a mostrar mientras loading es true
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-white">
-        <p className="text-5xl">...Loading</p>
+      <div className="fixed top-0 left-0 w-full h-full  flex flex-col items-center justify-center bg-black bg-opacity-50">
+        <div className="flex flex-col gap-4 items-center justify-center w-2/6 h-[280px] bg-white rounded-xl ">
+          <Spinner />
+          <p className="text-3xl">Subiendo Archivo...</p>
+        </div>
       </div>
     );
   }
@@ -107,58 +111,67 @@ const LiberiaEditor = () => {
           Rellena el formulario y empieza a vender
         </h1>
         <form className="flex flex-col mt-8 h-full gap-4">
-          <div className="flex flex-row  ">
+          <div className="flex flex-row w-full">
             {" "}
-            <TextInput
-              inputType="text"
-              label="Título/Asignatura"
-              bgColor="bg-gray-100"
-              inputWidth="w-10/12"
-              placeholder="Título"
-              required={true}
-              inputRef={title}
-            />
-            <TextInput
-              inputType="text"
-              label="Año asignatura"
-              bgColor="bg-gray-100"
-              inputWidth="w-10/12"
-              placeholder="20XX-20XX"
-              required={true}
-              inputRef={year}
-            />
+            <div className="w-1/2 pr-2 ">
+              <TextInput
+                inputType="text"
+                label="Título/Asignatura"
+                bgColor="bg-gray-100"
+                inputWidth="w-full"
+                placeholder="Título"
+                required={true}
+                inputRef={title}
+              />
+            </div>
+            <div className="w-1/4">
+              <TextInput
+                inputType="text"
+                label="Año asignatura"
+                bgColor="bg-gray-100"
+                inputWidth="w-full"
+                placeholder="20XX-20XX"
+                required={true}
+                inputRef={year}
+              />
+            </div>
           </div>
-          <div className="flex flex-row">
-            <TextInput
-              inputType="text"
-              label="Profesor"
-              bgColor="bg-gray-100"
-              inputWidth="w-7/12"
-              placeholder="Nombre profesor"
-              required={true}
-              inputRef={professour}
-            />
-            <SelectInput
-              label="Universidad"
-              bgColor="bg-gray-100"
-              inputWidth="w-10/12"
-              onOptionChange={handleUniversidadChange}
-              enabled={true}
-            />
-
-            <SelectInput
-              label="Facultad"
-              bgColor="bg-gray-100"
-              inputWidth="w-10/12"
-              onOptionChange={handleFacultadChange}
-              enabled={isUniversitySelected}
-            />
+          <div className="flex flex-row w-full justify-between gap-2">
+            <div className="w-1/2">
+              <TextInput
+                inputType="text"
+                label="Profesor"
+                bgColor="bg-gray-100"
+                inputWidth="w-full"
+                placeholder="Nombre profesor"
+                required={true}
+                inputRef={professour}
+              />
+            </div>
+            <div className="w-1/4">
+              <SelectInput
+                label="Universidad"
+                bgColor="bg-gray-100"
+                inputWidth="w-full"
+                onOptionChange={handleUniversidadChange}
+                enabled={true}
+              />
+            </div>
+            <div className="w-1/4">
+              <SelectInput
+                label="Facultad"
+                bgColor="bg-gray-100"
+                inputWidth="w-full"
+                onOptionChange={handleFacultadChange}
+                enabled={isUniversitySelected}
+              />
+            </div>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row w-full justify-between gap-8">
             <SelectInput
               label="Grado"
               bgColor="bg-gray-100"
-              inputWidth="w-10/12"
+              inputWidth="w-full"
               required
               onOptionChange={handleGradoChange}
               enabled={isFacultadSelected}
@@ -166,7 +179,7 @@ const LiberiaEditor = () => {
             <SelectInput
               label="Curso"
               bgColor="bg-gray-100"
-              inputWidth="w-10/12"
+              inputWidth="w-full"
               required
               onOptionChange={handleCursoChange}
               enabled={isGradoSelected}
@@ -175,19 +188,19 @@ const LiberiaEditor = () => {
               inputType="number"
               label="Notas"
               bgColor="bg-gray-100"
-              inputWidth="w-7/12"
+              inputWidth="w-full"
               placeholder="0"
               required={true}
               inputRef={number}
             />
           </div>
-          <div>
+          <div className="w-full">
             <TextInput
               inputType="text"
               label="Descripcion Original"
               inputheightclass="h-[80px]"
               bgColor="bg-gray-100"
-              inputWidth="w-11/12"
+              inputWidth="w-12/12"
               placeholder="Introduce una breve descripción acerca de la universidad, asignatura, apunte, etc"
               required={true}
               inputRef={descripction}

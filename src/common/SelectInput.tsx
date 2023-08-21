@@ -59,7 +59,7 @@ const SelectInput: FC<SelectInputProps> = ({
 
   return (
     <div className={`${inputWidth}`}>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+      <label className="block mb-2 text-base font-medium text-gray-900 dark:text-white">
         {label}
       </label>
       <div className="relative">
