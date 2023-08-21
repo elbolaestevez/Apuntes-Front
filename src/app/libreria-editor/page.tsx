@@ -23,7 +23,8 @@ const LiberiaEditor = () => {
   const [loading, setLoading] = useState(false);
 
   const isUniversitySelected = selectedUniversidad.length > 1;
-  const isFacultadSelected = selectedFacultad.length > 1;
+  const isFacultadSelected =
+    selectedFacultad.length > 1 && selectedUniversidad.length > 1;
   const isGradoSelected =
     selectedGrado.length > 1 && selectedFacultad.length > 1;
 

@@ -58,7 +58,7 @@ const SelectInput: FC<SelectInputProps> = ({
   };
 
   return (
-    <div className={`${inputWidth}`}>
+    <div className={`${inputWidth} relative`}>
       <label className="block mb-2 text-base font-medium text-gray-900 dark:text-white">
         {label}
       </label>
@@ -79,7 +79,7 @@ const SelectInput: FC<SelectInputProps> = ({
           //     onClick={handleClearInput}
           //   >
           <RxCross2
-            className="absolute right-60 top-1/2 transform -translate-y-1/2 cursor-pointer"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
             onClick={handleClearInput}
           />
           //   </div>
