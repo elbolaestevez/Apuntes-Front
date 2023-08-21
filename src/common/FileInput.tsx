@@ -14,6 +14,7 @@ const FileInput: FC<FileInputProps> = ({ label, accept, onChange }) => {
   const [isFileUploaded, setIsFileUploaded] = useState<boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true);
     const selectedFile = e.target.files && e.target.files[0];
     if (selectedFile) {
       // Validar el tamaño del archivo
@@ -22,14 +23,17 @@ const FileInput: FC<FileInputProps> = ({ label, accept, onChange }) => {
         setFileError("El archivo excede el tamaño máximo permitido (250 MB).");
         e.target.value = "";
         onChange(null);
+        setLoading(false);
         return;
       }
 
       setFileError(null);
+      setLoading(false);
       setIsFileUploaded(true);
       onChange(selectedFile);
     } else {
       setFileError(null);
+      setLoading(false);
       setIsFileUploaded(true);
       e.target.value = "";
       onChange(null);
